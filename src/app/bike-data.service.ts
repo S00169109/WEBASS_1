@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpBackend } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 import { IBikeData } from './ibike-data';
 import {tap,catchError} from 'rxjs/operators';
@@ -14,10 +14,14 @@ url:string;
     this.url = "../../bikedata.json";
    }
   getdata():Observable<IBikeData[]>{
-    return this.HTTP.get<IBikeData[]>(this.url).pipe(tap(data=>console.log(JSON.stringify(data))),catchError(this.handleErr));
-  }
-   private handleErr(err:HttpErrorResponse){
+    return this.HTTP.get<IBikeData[]>(this.url).pipe(catchError(err => {return Observable.throw(err)})); 
+    // HOW IS THIS FUNCTION NOT GOT PARENTHESIS WITH PARAMETER INSIDE OF TYPE HTTP ERROR RESPONSE
+    // THE FUNCTION ITSELF BELOW EXPECTS A PARAMETER???
+  
+    /*  private handleErr(err:HttpErrorResponse){                                
+       console.log(err.message);
       return Observable.throw(err.message);
-      
-  } 
-}
+      */
+    
+    }
+  }

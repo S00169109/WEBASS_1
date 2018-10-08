@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {BikeDataService} from './bike-data.service';
-import {IBikeData} from './ibike-data'
-import { HttpErrorResponse } from '@angular/common/http';
+import {IBikeData} from './ibike-data';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,10 +12,11 @@ Data:IBikeData[];
 
   constructor(private GetData:BikeDataService) {
    this.DataRetrieval();
+
   }
-  DataRetrieval():void{
-    this.GetData.getdata().subscribe(data=>this.Data = data
-      
-      )
-  }
+  DataRetrieval(){
+    this.GetData.getdata().subscribe(data => {
+      this.Data=data
+    }
+    )};
 }

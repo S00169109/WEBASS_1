@@ -4,9 +4,8 @@
   </h3>
   <div class='card-body'>
       <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Filter by:" aria-label="Filter by:" aria-describedby="basic-addon1">
+          
         </div>
-        <h5 class="card-text">Filtered by:</h5>
       <div class='table-responsive'>
           <table class='table'>
               <thead>
@@ -19,13 +18,20 @@
                       <th>Product</th>
                       <th>Code</th>
                       <th>Available</th>
+                      <th>Category</th>
                       <th>Price</th>
                       <th>5 Star Rating</th>
                   </tr>
               </thead>
-              <tbody>
-                 
-              </tbody>
+              <tbody *ngFor="let bike of dispData">
+                 <td><img src="{{bike.imageUrl}}" alt="no image found" width=40 height=40 [style.marginLeft.px]="20"></td>
+                 <td>{{bike.bikeName}}</td>
+                 <td>{{bike.bikeCode}}</td>
+                 <td>{{bike.releaseDate}}</td>
+                 <td>{{bike.category}}</td>
+                 <td>{{bike.price}}</td>
+                 <td>{{bike.starRating}}</td>
+                </tbody>
           </table>
       </div>
   </div>
