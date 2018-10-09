@@ -4,7 +4,13 @@
   </h3>
   <div class='card-body'>
       <div class="input-group mb-3">
-          <input type="radio" value="Men" >
+          <h5>Filtered Products: </h5>
+          <label for="Men">Mens: </label>
+          <input type="radio" id="Men" value="Men" name="gender" (click)="FilterItems('Men')">
+          <label for="Women">Womens: </label>
+          <input type="radio" id="Women" value="Women" name="gender" (click)="FilterItems('Women')">
+          <label for="Kids">Kids: </label>
+          <input type="radio" id="Kids" value="Kids" name="gender" (click)="FilterItems('Kids')">
         </div>
       <div class='table-responsive'>
           <table class='table'>
