@@ -4,14 +4,14 @@
   </h3>
   <div class='card-body'>
       <div class="input-group mb-3">
-          
+          <input type="radio" value="Men" >
         </div>
       <div class='table-responsive'>
           <table class='table'>
               <thead>
                   <tr>
                       <th>
-                          <button class='btn btn-primary'>
+                          <button (click)="ToggleImg()" class='btn btn-primary'>
                               Show Image
                           </button>
                       </th>
@@ -24,13 +24,14 @@
                   </tr>
               </thead>
               <tbody *ngFor="let bike of dispData">
-                 <td><img src="{{bike.imageUrl}}" alt="no image found" width=40 height=40 [style.marginLeft.px]="20"></td>
+                <img [style.visibility]="check ? 'visible':'hidden'" [style.margin]="10" src="{{bike.imageUrl}}" alt="no image found" width=60 height=50>
                  <td>{{bike.bikeName}}</td>
                  <td>{{bike.bikeCode}}</td>
                  <td>{{bike.releaseDate}}</td>
                  <td>{{bike.category}}</td>
                  <td>{{bike.price}}</td>
                  <td>{{bike.starRating}}</td>
+                 
                 </tbody>
           </table>
       </div>
