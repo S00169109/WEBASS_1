@@ -14,6 +14,7 @@ check:boolean;
     this.check = true;
    }
    FilterItems(value:string):void{
+     this.FilterBikes=null
      
     this.FilterBikes= this.dispData.filter((bike:IBikeData) => bike.category.indexOf(value.toLocaleLowerCase())==0);
    
@@ -22,17 +23,24 @@ check:boolean;
       if (this.FilterBikes.includes(element) == false && element != null) {
         this.FilterBikes.push(element)
       }
-      
     });
-     console.log(this.trial)
-      
+    //console.log(this.trial , "THIS IS TRIAL")
+    //console.log(this.FilterBikes , "THIS IS FILTERBIKES")
+    
    }
+   
     RemoveItems(value:string):void{
+     /*  var t;
       this.trial=null
-      this.FilterBikes.forEach(element => {
-        this.FilterBikes.splice(element.category.indexOf(value.toLocaleLowerCase()))
-      });
+      this.FilterBikes=this.dispData
       console.log(this.FilterBikes)
+  this.FilterBikes=  this.dispData.filter((bike:IBikeData) => 
+  bike.category.indexOf(value.toLocaleLowerCase())==0);
+    
+this.trial= this.FilterBikes.splice(0)
+console.log(this.trial)
+      
+      */
    }
     ToggleImg():boolean{
      return this.check = !this.check
