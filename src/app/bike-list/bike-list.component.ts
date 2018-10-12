@@ -14,33 +14,49 @@ check:boolean;
     this.check = true;
    }
    FilterItems(value:string):void{
-     this.FilterBikes=null
      
     this.FilterBikes= this.dispData.filter((bike:IBikeData) => bike.category.indexOf(value.toLocaleLowerCase())==0);
-   
+    
    this.trial=  this.FilterBikes.concat(this.trial)
+   console.log(this.FilterBikes, this.trial)
     this.trial.forEach(element => {
       if (this.FilterBikes.includes(element) == false && element != null) {
         this.FilterBikes.push(element)
       }
     });
-    //console.log(this.trial , "THIS IS TRIAL")
-    //console.log(this.FilterBikes , "THIS IS FILTERBIKES")
-    
+    console.log(this.trial , "TRIAL from filter")
+    console.log(this.FilterBikes , "FILTERBIKES from filter")
    }
    
     RemoveItems(value:string):void{
-     /*  var t;
-      this.trial=null
-      this.FilterBikes=this.dispData
-      console.log(this.FilterBikes)
-  this.FilterBikes=  this.dispData.filter((bike:IBikeData) => 
+     
+      if (this.FilterBikes) {
+        this.FilterBikes=  this.FilterBikes.filter((bike:IBikeData) => 
   bike.category.indexOf(value.toLocaleLowerCase())==0);
-    
-this.trial= this.FilterBikes.splice(0)
-console.log(this.trial)
-      
-      */
+
+        this.FilterBikes.forEach(element => {
+          if (this.trial.includes(element)) {
+            this.trial.splice(this.trial.indexOf(element),this.FilterBikes.length)
+            //this.FilterBikes.splice(this.FilterBikes.indexOf(element),this.trial.length)
+          }
+        });
+        this.FilterBikes.splice(0)
+        this.trial.forEach(bike => {
+          if (bike!=null) {
+            this.FilterBikes.push(bike)
+          }
+        });
+      }
+  
+ 
+  console.log(this.trial, "Important")
+//this.trial= this.trial.splice(0,this.trial.length,...this.trial)
+ /* this.trial.forEach(element => {
+  if (this.FilterBikes.includes(element)) {
+    this.FilterBikes.splice(this.FilterBikes.indexOf(element),this.trial.length)
+  }
+});  */
+console.log(this.trial ,"< trial", this.FilterBikes , "< filterbikes")
    }
     ToggleImg():boolean{
      return this.check = !this.check
